@@ -1,0 +1,7 @@
+<section class="menu-container">
+  <mat-list role="list" *ngFor="let item of menuItems">
+    <mat-list-item role="listitem" [routerLink]="item.path">
+      {{ item.name }}
+    </mat-list-item>
+  </mat-list>
+</section>

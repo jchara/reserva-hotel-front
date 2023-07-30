@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Hotel } from 'src/app/shared/interfaces/hotels/hotels.interface';
 import { HotelsService } from 'src/app/shared/services/hotels.service';
@@ -9,7 +10,6 @@ import { HotelsService } from 'src/app/shared/services/hotels.service';
   styleUrls: ['./hotels.component.css'],
 })
 export class HotelsComponent implements OnInit {
-  test: string = 'Chara';
   hotels: Hotel[] = [];
   displayedColumns: string[] = [
     'id',
@@ -22,7 +22,7 @@ export class HotelsComponent implements OnInit {
     'actions',
   ];
 
-  constructor(private hotelsService: HotelsService) {}
+  constructor(private hotelsService: HotelsService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllHotels();
@@ -33,15 +33,13 @@ export class HotelsComponent implements OnInit {
     });
   }
 
-  public createHotel(hotel: Hotel): void {
-    this.hotelsService.createHotel(hotel).subscribe((response) => {
-      this.getAllHotels();
-    });
-  }
-
   public deleteHotel(id: number): void {
     this.hotelsService.deleteHotel(id).subscribe((response) => {
       this.getAllHotels();
     });
+  }
+
+  public setHotelId(id: number): void {
+    this.router.navigateByUrl(`hotels/form?id=${id}`);
   }
 }

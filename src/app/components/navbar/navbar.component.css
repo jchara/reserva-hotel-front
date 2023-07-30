@@ -1,0 +1,16 @@
+.nav-container {
+  height: 100%;
+  width: 100%;
+}
+
+.sidenav {
+  width: 12em;
+}
+
+.sidenav-content {
+  height: 100%;
+}
+
+section {
+  margin: 2em;
+}

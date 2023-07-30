@@ -7,15 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HotelsModule } from './pages/hotels/hotels.module';
+import { MaterialModule } from './shared/modules/material/material.module';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HotelsModule,
     HttpClientModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

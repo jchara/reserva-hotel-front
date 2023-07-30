@@ -1,1 +1,47 @@
-<p>rooms works!</p>
+<section class="head-section">
+  <h1>Habitaciones</h1>
+  <button mat-raised-button color="primary" routerLink="/rooms/form">
+    Añadir habitación
+  </button>
+</section>
+<table mat-table [dataSource]="rooms" class="mat-elevation-z8">
+  <ng-container matColumnDef="roomNumber">
+    <th mat-header-cell *matHeaderCellDef>Numero de habitación</th>
+    <td mat-cell *matCellDef="let element">{{ element.roomNumber }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Precio</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="roomType">
+    <th mat-header-cell *matHeaderCellDef>Tipo de habitación</th>
+    <td mat-cell *matCellDef="let element">{{ element.roomType }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="bedsNumber">
+    <th mat-header-cell *matHeaderCellDef>Numero de camas</th>
+    <td mat-cell *matCellDef="let element">{{ element.bedsNumber }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="hotelId">
+    <th mat-header-cell *matHeaderCellDef>Hotel</th>
+    <td mat-cell *matCellDef="let element">{{ element.hotelId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button routerLink="/rooms/form">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteRoom(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,14 @@
+.menu-container {
+  margin-top: 10em;
+}
+
+mat-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
+}
+
+mat-list-item:hover {
+  align-items: center;
+  margin: 0%;
+}
