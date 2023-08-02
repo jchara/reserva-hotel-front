@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Swal, { SweetAlertIcon, SweetAlertPosition } from 'sweetalert2';
+import Swal, { SweetAlertIcon, SweetAlertPosition, SweetAlertResult } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class SweetalertService {
     });
   }
 
-  confirmAlert(): Promise<any> {
+  confirmAlert(): Promise<SweetAlertResult> {
     return Swal.fire({
       title: 'Esta seguro de eliminar este registro?',
       text: 'No podrá revertir esta acción!',
