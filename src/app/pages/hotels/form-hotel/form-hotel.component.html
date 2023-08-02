@@ -1,26 +1,45 @@
-<h1>Agregar nuevo hotel</h1>
+<h1>{{ title }} hotel</h1>
 <div class="container">
-
   <form class="form-section" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Ingresar nombre del hotel</mat-label>
-      <input matInput #input placeholder="Nombre de hotel" formControlName="name"/>
+      <input
+        matInput
+        #input
+        placeholder="Nombre de hotel"
+        formControlName="name"
+      />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Ingresar Teléfono</mat-label>
-      <input matInput #input placeholder="Teléfono" formControlName="phoneNumber" />
+      <input
+        matInput
+        #input
+        placeholder="Teléfono"
+        formControlName="phoneNumber"
+      />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Ingresar dirección</mat-label>
-      <input matInput #input placeholder="Dirección" formControlName="address"/>
+      <input
+        matInput
+        #input
+        placeholder="Dirección"
+        formControlName="address"
+      />
     </mat-form-field>
-
 
     <mat-form-field>
       <mat-label>Ingresar email</mat-label>
-      <input type="email" matInput #input placeholder="Email" formControlName="email" />
+      <input
+        type="email"
+        matInput
+        #input
+        placeholder="Email"
+        formControlName="email"
+      />
     </mat-form-field>
 
     <mat-form-field>

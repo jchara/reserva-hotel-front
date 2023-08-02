@@ -11,6 +11,7 @@ import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
   styleUrls: ['./hotels.component.css'],
 })
 export class HotelsComponent implements OnInit {
+  hasContent: boolean = false;
   hotels: Hotel[] = [];
   displayedColumns: string[] = [
     'id',
@@ -34,6 +35,7 @@ export class HotelsComponent implements OnInit {
   }
   public getAllHotels(): void {
     this.hotelsService.getAllHotels().subscribe((response) => {
+      this.hasContent = response.length > 0;
       this.hotels = response;
     });
   }

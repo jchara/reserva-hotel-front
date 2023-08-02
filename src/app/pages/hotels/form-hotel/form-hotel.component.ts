@@ -14,6 +14,7 @@ import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 export class FormHotelComponent implements OnInit {
   form!: FormGroup;
   hotelId!: number;
+  title = 'Crear';
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class FormHotelComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
     this.getParamUrl();
+    this.hotelId ? (this.title = 'Editar') : (this.title = 'Crear');
   }
 
   onSubmit(): void {

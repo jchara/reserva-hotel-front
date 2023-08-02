@@ -1,0 +1,18 @@
+.no-content {
+  width: inherit;
+  height: auto;
+  background: #e1e7e7;
+  border-radius: 0.5em;
+  padding: 2em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-info {
+  width: auto;
+  height: auto;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+}
