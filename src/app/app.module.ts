@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HotelsModule } from './pages/hotels/hotels.module';
-import { MaterialModule } from './shared/modules/material/material.module';
+import { AngularMaterialModule } from './shared/modules/material/angular-material.module';
 import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { MenuComponent } from './components/menu/menu.component';
     BrowserAnimationsModule,
     HotelsModule,
     HttpClientModule,
-    MaterialModule,
+    AngularMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

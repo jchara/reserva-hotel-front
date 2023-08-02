@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoomsComponent } from './rooms.component';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+
+import { AngularMaterialModule } from 'src/app/shared/modules/material/angular-material.module';
 import { FormRoomComponent } from './form-room/form-room.component';
+import { RoomsComponent } from './main-room/rooms.component';
+import { UilitiesModule } from 'src/app/shared/modules/utilities/utilities.module';
 
 const routes: Routes = [
   { path: '', component: RoomsComponent },
@@ -12,6 +14,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [RoomsComponent, FormRoomComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), MaterialModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    AngularMaterialModule,
+    UilitiesModule
+  ],
 })
 export class RoomsModule {}
