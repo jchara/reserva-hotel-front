@@ -1,1 +1,60 @@
-<p>form-room works!</p>
+<h1>{{ title }} habitación</h1>
+<div class="container">
+  <form class="form-section" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Ingresar número de la habitación</mat-label>
+      <input
+        type="number"
+        matInput
+        #input
+        placeholder="Numero	de habitación"
+        formControlName="roomNumber"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingresar Precio</mat-label>
+      <input
+        type="number"
+        matInput
+        #input
+        placeholder="Precio"
+        formControlName="price"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingresar tipo de habitación</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="Tipo de habitación"
+        formControlName="roomType"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingresar número de camas</mat-label>
+      <input
+        type="number"
+        matInput
+        #input
+        placeholder="Numero de camas"
+        formControlName="bedsNumber"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Hotel</mat-label>
+      <input matInput #input placeholder="Hotel" formControlName="hotelId" />
+    </mat-form-field>
+  </form>
+</div>
+<section class="buttons">
+  <button mat-stroked-button color="primary" routerLink="/rooms">
+    Cancelar
+  </button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    Guardar
+  </button>
+</section>
