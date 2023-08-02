@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Hotel } from 'src/app/shared/interfaces/hotels/hotels.interface';
 import { HotelsService } from 'src/app/shared/services/hotels.service';
+import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 
 @Component({
   selector: 'app-hotels',
@@ -22,7 +23,11 @@ export class HotelsComponent implements OnInit {
     'actions',
   ];
 
-  constructor(private hotelsService: HotelsService, private router: Router) {}
+  constructor(
+    private hotelsService: HotelsService,
+    private router: Router,
+    private sweetalertService: SweetalertService
+  ) {}
 
   ngOnInit(): void {
     this.getAllHotels();
@@ -34,8 +39,13 @@ export class HotelsComponent implements OnInit {
   }
 
   public deleteHotel(id: number): void {
-    this.hotelsService.deleteHotel(id).subscribe((response) => {
-      this.getAllHotels();
+    this.sweetalertService.confirmAlert().then((result) => {
+      if (result.isConfirmed) {
+        this.hotelsService.deleteHotel(id).subscribe((response) => {
+          this.getAllHotels();
+        });
+        this.sweetalertService.simpleAlert('Hotel eliminado');
+      }
     });
   }
 

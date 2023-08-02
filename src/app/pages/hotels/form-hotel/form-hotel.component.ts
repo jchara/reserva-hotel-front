@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Hotel } from 'src/app/shared/interfaces/hotels/hotels.interface';
 import { HotelsService } from 'src/app/shared/services/hotels.service';
+import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 
 @Component({
   selector: 'app-form-hotel',
@@ -18,7 +19,8 @@ export class FormHotelComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private hotelsService: HotelsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sweetalertService: SweetalertService
   ) {}
 
   ngOnInit(): void {
@@ -43,13 +45,14 @@ export class FormHotelComponent implements OnInit {
 
   createHotel(): void {
     this.hotelsService.createHotel(this.form.value).subscribe((response) => {
+      this.sweetalertService.simpleAlert('Hotel creado');
       this.router.navigateByUrl('/hotels');
     });
   }
 
   getParamUrl(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      if (Object.values(params).length === 0 ) return;
+      if (Object.values(params).length === 0) return;
 
       const { id } = params;
       this.hotelId = parseInt(id, 10);
@@ -68,6 +71,7 @@ export class FormHotelComponent implements OnInit {
     this.hotelsService
       .updateHotel(this.hotelId, hotelUpdated)
       .subscribe((response) => {
+        this.sweetalertService.simpleAlert('Hotel actualizado');
         this.router.navigateByUrl('/hotels');
       });
   }
