@@ -9,5 +9,6 @@ export class MenuComponent {
   menuItems: any[] = [
     { name: 'Hoteles', path: '/hotels' },
     { name: 'Habitaciones', path: '/rooms' },
+    { name: 'Usuarios', path: '/users'}
   ];
 }
