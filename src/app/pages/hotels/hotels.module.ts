@@ -2,10 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularMaterialModule } from 'src/app/shared/modules/material/angular-material.module';
 import { FormHotelComponent } from './form-hotel/form-hotel.component';
 import { HotelsComponent } from './main-hotel/hotels.component';
-import { UilitiesModule } from 'src/app/shared/modules/utilities/utilities.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: HotelsComponent },
@@ -14,12 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [HotelsComponent, FormHotelComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    AngularMaterialModule,
-    UilitiesModule
-  ],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   exports: [],
 })
 export class HotelsModule {}

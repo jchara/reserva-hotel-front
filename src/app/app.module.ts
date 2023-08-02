@@ -1,24 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HotelsModule } from './pages/hotels/hotels.module';
-import { AngularMaterialModule } from './shared/modules/material/angular-material.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, MenuComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
-    HotelsModule,
-    HttpClientModule,
-    AngularMaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],
