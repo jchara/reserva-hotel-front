@@ -31,6 +31,9 @@ export class FormHotelComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) return;
+
     this.hotelId ? this.updateHotel() : this.createHotel();
   }
 

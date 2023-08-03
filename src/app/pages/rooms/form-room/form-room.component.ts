@@ -39,6 +39,9 @@ export class FormRoomComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) return;
+    
     this.roomId ? this.updateRoom() : this.createRoom();
   }
 

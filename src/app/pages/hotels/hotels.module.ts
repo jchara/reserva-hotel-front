@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormHotelComponent } from './form-hotel/form-hotel.component';
-import { HotelsComponent } from './main-hotel/hotels.component';
+import { HotelsComponent } from './main-hotel/main-hotels.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [

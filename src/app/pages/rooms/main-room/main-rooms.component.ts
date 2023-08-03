@@ -8,9 +8,9 @@ import { RoomsService } from 'src/app/shared/services/rooms.service';
 import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 
 @Component({
-  selector: 'app-rooms',
-  templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css'],
+  selector: 'app-main-rooms',
+  templateUrl: './main-rooms.component.html',
+  styleUrls: ['./main-rooms.component.css'],
 })
 export class RoomsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
