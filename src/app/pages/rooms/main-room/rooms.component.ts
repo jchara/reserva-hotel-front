@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+
 import { Room } from 'src/app/shared/interfaces/rooms/rooms.interface';
 import { RoomsService } from 'src/app/shared/services/rooms.service';
 import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
@@ -10,8 +13,9 @@ import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
   styleUrls: ['./rooms.component.css'],
 })
 export class RoomsComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   hasContent: boolean = false;
-  rooms: Room[] = [];
+  rooms!: MatTableDataSource<Room>;
 
   displayedColumns: string[] = [
     'roomNumber',
@@ -25,7 +29,8 @@ export class RoomsComponent implements OnInit {
   constructor(
     private roomsService: RoomsService,
     private router: Router,
-    private sweetalertService: SweetalertService
+    private sweetalertService: SweetalertService,
+    private paginatorIntl: MatPaginatorIntl
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +40,9 @@ export class RoomsComponent implements OnInit {
   getAllRooms(): void {
     this.roomsService.getAllRooms().subscribe((response) => {
       this.hasContent = response.length > 0;
-      this.rooms = response;
+      this.paginatorIntl.itemsPerPageLabel = 'Habitaciones por página:';
+      this.rooms = new MatTableDataSource<Room>(response);
+      this.rooms.paginator = this.paginator;
     });
   }
 

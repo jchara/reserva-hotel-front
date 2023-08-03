@@ -5,7 +5,7 @@
   </button>
 </section>
 
-<section *ngIf="hasContent; else noContent">
+<ng-container *ngIf="hasContent; else noContent">
   <table mat-table [dataSource]="hotels" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -57,9 +57,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-</section>
+</ng-container>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10"></mat-paginator>
 <ng-template #noContent>
-  <no-content>
-    No hay hoteles registrados
-  </no-content>
+  <no-content> No hay hoteles registrados </no-content>
 </ng-template>

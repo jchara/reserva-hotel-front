@@ -48,6 +48,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </section>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10"></mat-paginator>
 <ng-template #noContent>
   <no-content>
     No hay habitaciones registrados

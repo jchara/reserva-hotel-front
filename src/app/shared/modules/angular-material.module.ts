@@ -8,6 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatorEsService } from '../services/paginator-es.service';
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,9 @@ import { MatTableModule } from '@angular/material/table';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,    
+    MatSelectModule,
+    MatPaginatorModule,
   ],
+  providers: [{ provide: MatPaginatorIntl, useClass: PaginatorEsService }],
 })
 export class AngularMaterialModule {}

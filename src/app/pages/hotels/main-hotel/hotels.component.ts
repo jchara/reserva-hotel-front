@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { Hotel } from 'src/app/shared/interfaces/hotels/hotels.interface';
@@ -11,8 +13,9 @@ import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
   styleUrls: ['./hotels.component.css'],
 })
 export class HotelsComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  hotels!: MatTableDataSource<Hotel>;
   hasContent: boolean = false;
-  hotels: Hotel[] = [];
   displayedColumns: string[] = [
     'id',
     'name',
@@ -27,16 +30,20 @@ export class HotelsComponent implements OnInit {
   constructor(
     private hotelsService: HotelsService,
     private router: Router,
-    private sweetalertService: SweetalertService
+    private sweetalertService: SweetalertService,
+    private paginatorIntl: MatPaginatorIntl
   ) {}
 
   ngOnInit(): void {
     this.getAllHotels();
   }
+  
   public getAllHotels(): void {
     this.hotelsService.getAllHotels().subscribe((response) => {
       this.hasContent = response.length > 0;
-      this.hotels = response;
+      this.paginatorIntl.itemsPerPageLabel = 'Hoteles por página:';
+      this.hotels = new MatTableDataSource<Hotel>(response);
+      this.hotels.paginator = this.paginator;
     });
   }
 

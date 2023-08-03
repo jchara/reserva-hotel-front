@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Hotel } from 'src/app/shared/interfaces/hotels/hotels.interface';
 import { Room } from 'src/app/shared/interfaces/rooms/rooms.interface';
+import { HotelsService } from 'src/app/shared/services/hotels.service';
 import { RoomsService } from 'src/app/shared/services/rooms.service';
 import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 
@@ -13,6 +15,7 @@ import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 export class FormRoomComponent implements OnInit {
   form!: FormGroup;
   roomId!: number;
+  hotels!: Hotel[];
   title = 'Crear';
 
   constructor(
@@ -20,11 +23,13 @@ export class FormRoomComponent implements OnInit {
     private roomsService: RoomsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private sweetalertService: SweetalertService
+    private sweetalertService: SweetalertService,
+    private hotelsService: HotelsService
   ) {}
   ngOnInit(): void {
     this.buildForm();
     this.getParamUrl();
+    this.getAllHotels();
 
     this.roomId ? (this.title = 'Editar') : (this.title = 'Crear');
   }
@@ -74,5 +79,11 @@ export class FormRoomComponent implements OnInit {
         this.sweetalertService.simpleAlert('Habitación actualizada');
         this.router.navigateByUrl('/rooms');
       });
+  }
+
+  public getAllHotels(): void {
+    this.hotelsService.getAllHotels().subscribe((response) => {
+      this.hotels = response;
+    });
   }
 }
