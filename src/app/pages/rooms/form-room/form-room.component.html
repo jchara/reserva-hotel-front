@@ -24,13 +24,10 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Ingresar tipo de habitación</mat-label>
-      <input
-        matInput
-        #input
-        placeholder="Tipo de habitación"
-        formControlName="roomType"
-      />
+      <mat-label>Tipo de habitación</mat-label>
+      <mat-select disableRipple formControlName="roomType">
+        <mat-option *ngFor="let type of typeRooms" [value]="type">{{ type }}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>

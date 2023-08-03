@@ -17,6 +17,7 @@ export class FormRoomComponent implements OnInit {
   roomId!: number;
   hotels!: Hotel[];
   title = 'Crear';
+  typeRooms: string[] = [];
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -25,7 +26,10 @@ export class FormRoomComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sweetalertService: SweetalertService,
     private hotelsService: HotelsService
-  ) {}
+  ) {
+    this.typeRooms = ['Sencilla', 'Doble', 'Triple', 'Suite'];
+  }
+
   ngOnInit(): void {
     this.buildForm();
     this.getParamUrl();
