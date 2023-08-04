@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserID } from 'src/app/shared/interfaces/users/users.interface';
 import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 import { UsersService } from 'src/app/shared/services/users.service';
@@ -14,13 +14,15 @@ export class FormComponent implements OnInit {
   title: string = 'Crear';
   form!: FormGroup;
   userID!: UserID;
+  hide: boolean = true;
   documentTypes!: { value: string; viewValue: string }[];
 
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private sweetalertService: SweetalertService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.documentTypes = [
       { value: 'CC', viewValue: 'Cédula de ciudadanía' },
@@ -66,7 +68,7 @@ export class FormComponent implements OnInit {
   }
 
   getParamsUrl(): void {
-    this.router.routerState.root.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       if (Object.values(params).length === 0) return;
       const { type, number } = params;
       if (type && number) {
